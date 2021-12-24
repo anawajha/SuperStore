@@ -40,6 +40,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
+        
+        let isLogin = UserDefaults.standard.bool(forKey: "isLogin")
+        if (isLogin){
+            let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+            let vc = storyBoard.instantiateViewController(identifier: "tabBar") as! UITabBarController
+            window?.rootViewController = vc
+        }
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
